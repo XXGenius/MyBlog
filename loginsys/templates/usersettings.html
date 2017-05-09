@@ -3,7 +3,7 @@
     <div class='col-md-3' >
         <form  form action="/auth/usersettings/" method ="post">
             {% csrf_token %}
-            
+            {{ form }}
             <input class="btn btn-default" type="submit" value="Сохранить изменения">
         </form>
 
