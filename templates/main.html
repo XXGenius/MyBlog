@@ -1,0 +1,95 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap.css" %}"/>
+       <link rel="stylesheet" type="text/css" href="{% static "style.css" %}"/>
+
+   <link rel="stylesheet" type="text/css" href="{% static "sign-in.css" %}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static "offcanvas.css" %}"/>
+       
+   
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    
+
+  
+
+  </head>
+</head>
+
+<body >
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class= "container">
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+           <a class="navbar-brand" href="/">Мой блог</a>
+           </div>
+          <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">В начало</a></li>
+
+                {% if username %}
+                <li><a href="/auth/logout/">Выйти ({{ username }})</a></li>
+                 
+                   
+            {% else %}
+                 <li><a href="/auth/login/">Войти</a></li>
+            {% endif %}
+         
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+ 
+         </div>
+          <h1 class=""><a href="/" ><img src="{% static 'logo.png' %}" width="400px" height="170px"></a></h1><hr>
+
+
+  <div class="container margin " >
+  {% block article %}{% endblock %}
+  {% block login %}{% endblock %}
+  {% block addarticle %}{% endblock %}
+  {% block change %}{% endblock %}
+  {% block akk %}{% endblock %}
+  </div>
+  </div>
+
+</body>
+<div class=" footer ">
+    
+
+      <div class="container">
+         <div class="  collapse navbar-collapse">
+             <ul class="nav navbar-nav">
+                <li><a href="/">В начало</a></li>
+                <li><a href="#">About(Не назначена)</a></li>
+                <li><a href="#">Ваши отзывы</a></li>
+             </ul>
+         </div>
+       </div>     
+  
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="{% static "offcanvas.js" %}"></script>
+<script src="{% static "bootstrap.js" %}"></script>
+
+</html>

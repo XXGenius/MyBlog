@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block login %}
+
+
+
+<div class="sign" >
+
+    <div class="container">
+
+      <form class="form-signin"  action="/auth/login/" method ="post" >
+       {% csrf_token %}
+        <h2 class="form-signin-heading">Введите ваши данные</h2>
+
+        <label class="label" for="username" >Имя пользователя</label>
+        <input class="form-control" placeholder="Username"  type="text" name="username" id="username">
+
+        <label class="label" for= "password">Пароль</label>
+        <input class="form-control" placeholder="Password"  type="password" name="password" id="password">
+
+         {% if login_error %}
+         <label class='error'>{{ login_error }}</label>
+         {% endif %}
+        
+      
+         <input class="btn btn-lg btn-default btn-block" type="submit" value="Войти">
+       
+          <div class="label round secondary" ><a href="/auth/register">Зарегестрироваться</a></div>
+      </form>
+
+    </div> <!-- /container -->
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+
+{% endblock %}

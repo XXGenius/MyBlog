@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block addarticle %}
+    <form class="col-sm-2 " action="/addarticle/" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form }}
+    <input class="btn btn-default" type="submit" value="Добавить статью">
+	</form>
+{% endblock %}

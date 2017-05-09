@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block akk %}
+    
+{% if user.avatar %}
+<h4>{{ user.avatar }}</h4>
+<img src= "{{ user.avatar.url }}" width="640px" height="480px" >
+{% else %}
+<img src="default.png">
+{% endif %}
+<h4>{{  user.username }}</h4>
+<h4>{{ user.first_name }}</h4>
+
+<h4>{{ user.email }}</h4>
+
+
+
+
+
+
+{% endblock %}

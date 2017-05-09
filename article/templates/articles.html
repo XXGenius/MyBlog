@@ -1,0 +1,74 @@
+{% extends 'main.html'%}
+{% load staticfiles %}
+
+{% block article %}
+
+<div class=" row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-8">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron">
+            <h2>Приветствую!</h2>
+            <p>Это тестовая версия моего первого проекта на Python/Django!</p>
+          </div>
+          <div class="row">
+         
+         {% for article in articles %}
+         
+            <div class="col-6 col-sm-4 col-lg-4">
+            
+            {% if article.img %}
+            <img src= "{{ article.img.url }}" width="180px" height="150px" >
+             {% else %}
+            <img src="default.png" width="180px" height="150px">
+            {% endif %}  
+            <h5>{{ article.title }}</h5>
+            
+            <a class="btn btn-primary" href="articles/get/{{ article.id }}" role="button">Читать »</a>
+            </div><!--/span-->
+          {% endfor %}
+
+          </div><!--/span-->
+          </div><!--/row-->
+         
+              {% if  not username %}
+           <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            
+            <a href="/auth/login/" class="list-group-item">Войти</a>
+            <a href="/auth/register/" class="list-group-item">Зарегестрироваться</a>
+          {% endif %}
+          {% if username %}
+           <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            <a href="auth/akk/" class="list-group-item">Настройки(Доработать)</a>
+            <a href="/addarticle/" class="list-group-item">Добавить статью</a>
+            {% for category in categories %}
+            <a href="#" class="list-group-item">{{ category.name }}</a>
+          
+            {% endfor %}
+          {% endif %}
+          
+
+          </div>
+        </div><!--/span-->
+      </div>
+
+       
+
+       
+
+
+ 
+
+
+
+
+{% endblock %}
+
+
+
+
+   

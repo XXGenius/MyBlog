@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block login %}
+<div class="sign" > 
+    <div class="container">
+        <form class="form-signin " action="/auth/register/" method="post">
+         <h2 class="form-signin-heading">Введите ваши данные</h2>
+            {% csrf_token %}
+          <div class="form-control" >
+            {{ form }}
+          </div>  
+             <input class="btn btn-default" type="submit" value="Зарегестрироваться">
+        </form>
+    </div></div>
+{% endblock %}

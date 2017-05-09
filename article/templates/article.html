@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block article %}
+
+<h4>Дата публикации: {{ article.date }}</h4>
+<h4>Автор статьи: {{  article.user }}</h4>
+
+<h2 class="h3">{{ article.title }}</h2><hr>
+{% if article.img %}
+<img src= "{{ article.img.url }}" width="640px" height="480px" >
+{% else %}
+<img src="default.png">
+{% endif %}<hr><hr>
+<p>{{ article.text }}</p>
+<h6>по теме: {{ article.category }}</h6>
+<hr>
+<div>
+<p>Комментарии:</p>
+{%   for comment in comments %}
+    <h4>>>{{ comment.username_comments }}<<</h4>
+    <p>{{ comment.date }}</p>
+    <p>{{ comment.comments_text }}</p>
+    <hr>
+{% endfor %}
+   {%if username%}
+   <form class="col-sm-2" action="/articles/addcomment/{{ article.id }}/" method="post">{{ username.comment }}{{comment.username_comments}}
+   {% csrf_token %}
+   {{ form }}
+   <input type="submit" class="button" value="добавить комментарий!">
+   </form>
+       {% endif %}
+</div>
+{% endblock %}
