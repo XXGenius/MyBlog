@@ -1,15 +1,35 @@
 {% extends 'main.html' %}
 
 {% block login %}
-<div class="sign" > 
+
+
+
+<div class="sign" >
+
     <div class="container">
-        <form class="form-signin " action="/auth/register/" method="post">
-         <h2 class="form-signin-heading">Введите ваши данные</h2>
-            {% csrf_token %}
-          <div class="form-control" >
-            {{ form }}
-          </div>  
-             <input class="btn btn-default" type="submit" value="Зарегестрироваться">
-        </form>
-    </div></div>
+
+      <form class="form-signin"  action="/auth/register/" method ="post" >
+       {% csrf_token %}
+        <h2 class="form-signin-heading">Введите ваши данные</h2>
+
+        <label class="label" for="username" >Имя пользователя</label>
+        <input class="form-control" placeholder="Имя пользователя (A-z)"  type="text" name="username" id="username">
+
+        <label class="label" for= "password1">Пароль</label>
+        <input class="form-control" placeholder="Придумайте пароль"  type="password" name="password1" id="password1">
+          <label class="label" for= "password2">Пароль</label>
+        <input class="form-control" placeholder="Пароль(Ещё раз)"  type="password" name="password2" id="password2">
+
+         {% if login_error %}
+         <label class='error'>{{ login_error }}</label>
+         {% endif %}
+        
+      
+         <input class="btn btn-lg btn-default btn-block" type="submit" value="Зарегистрироваться">
+       
+    
+      </form>
+
+    </div> <!-- /container -->
+</div>
 {% endblock %}

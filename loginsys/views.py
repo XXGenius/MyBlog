@@ -32,10 +32,14 @@ def register(request ): #функция регистрации нового по
     args = {}
     args.update(csrf(request))
     args['form']= UserCreationForm()
-    print(args)
+ 
     if request.POST:
         newuser_form = UserCreationForm (request.POST)
         if newuser_form.is_valid():
+            username = newuser_form.cleaned_data['username']
+            password1 = newuser_form.cleaned_data['password1']
+            password2 = newuser_form.cleaned_data['password2']
+           
             newuser_form.save()
             new_user = auth.authenticate(username=newuser_form.cleaned_data['username'], password=newuser_form.cleaned_data['password2'])
             auth.login(request, new_user)  # сразу авторизуем если всё валидно/без ошибок
@@ -45,15 +49,17 @@ def register(request ): #функция регистрации нового по
     return render_to_response('register.html' , args)
 
 
-def changeuser(request ): #функция регистрации нового пользователя
+def changeuser(request ): #функция редактирования пользователя
     args = {}
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['form']= ChangeUser()
     if request.POST:
         changeuser_form = ChangeUser(request.POST, request.FILES)
+    
+        print(changeuser_form)
         if changeuser_form.is_valid():
-           
+        
            changeuser_form.save()
            return redirect('/')
         else:
@@ -63,7 +69,7 @@ def changeuser(request ): #функция регистрации нового п
 
 
 
-def aсс(request):  # добавление статьи
+def acc(request): 
     args = {}
     args['username'] = auth.get_user(request).username
     args['user'] = request.user
