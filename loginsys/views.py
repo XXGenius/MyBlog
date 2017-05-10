@@ -32,6 +32,7 @@ def register(request ): #функция регистрации нового по
     args = {}
     args.update(csrf(request))
     args['form']= UserCreationForm()
+    print(args)
     if request.POST:
         newuser_form = UserCreationForm (request.POST)
         if newuser_form.is_valid():
@@ -62,7 +63,7 @@ def changeuser(request ): #функция регистрации нового п
 
 
 
-def akk(request):  # добавление статьи
+def aсс(request):  # добавление статьи
     args = {}
     args['username'] = auth.get_user(request).username
     args['user'] = request.user

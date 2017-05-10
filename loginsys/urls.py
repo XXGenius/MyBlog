@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^logout/$', logout),
     url(r'^register/$', register),
     url(r'^usersettings/$', changeuser),
-    url(r'^akk/$', akk)
+    url(r'^aсс/$', aсс)
 ]
