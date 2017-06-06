@@ -17,6 +17,7 @@ from article.models import Article, Comments, Category
 
 
 def articles(request):  # страница со всеми статьями
+    
     return render_to_response('articles.html',
                               { 'categories': Category.objects.all()  ,'articles': Article.objects.all(), 'username': auth.get_user(request).username})
 
@@ -79,3 +80,19 @@ def addarticle(request):  # форма добавления новой стат�
             args['form'] = newarticle_form  # если есть ошибки, снова на страницу
             return redirect('//')
     return render_to_response('addarticle.html', args)
+
+
+
+def get_category(request, alias):
+    try:
+        username = auth.get_user(request).username
+        category = Category.objects.get(alias=alias)
+        article = Article.objects.filter(category=category)
+    except:
+        raise Http404 ('Обьект не найден')
+    context = {'category': category,
+               'articles': article,
+               'username': username,
+
+               }
+    return render_to_response('articles.html', context)

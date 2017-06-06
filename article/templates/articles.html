@@ -46,8 +46,8 @@
             <a href="auth/acc/" class="list-group-item">Настройки(Доработать)</a>
             <a href="/addarticle/" class="list-group-item">Добавить статью</a>
             {% for category in categories %}
-            <a href="#" class="list-group-item">{{ category.name }}</a>
-          
+           
+            <a href="category/{{category.alias}}/"  class="list-group-item">{{category.name}}</a>
             {% endfor %}
           {% endif %}
           
